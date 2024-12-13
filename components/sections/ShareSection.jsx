@@ -11,11 +11,11 @@ const ShareSection = () => {
   const shareToInstagram = () => {
     try {
       const link = document.createElement("a");
-      link.href = imageUrl;
+      link.href = "/logo.webp";
       link.download = "prismaforge_logo.webp";
       link.click();
-      const instagramDeepLink = "instagram://camera";
-      window.location.href = instagramDeepLink;
+      //   const instagramDeepLink = "instagram://camera";
+      //   window.location.href = instagramDeepLink;
     } catch (error) {
       setErrorMessage(
         "Instagram is not installed or this action is not supported on your device."
@@ -33,10 +33,10 @@ const ShareSection = () => {
           onClick={shareToInstagram}
         >
           <InstagramIcon />
-          Share on Instagram Story
+          Share on Instagram
         </Button>
         <img
-          src="https://prismaforge.vercel.app/logo_clear.png"
+          src="/logo.webp"
           alt="logo"
           className="w-full mt-4 bg-blue-200 rounded-lg"
         />
