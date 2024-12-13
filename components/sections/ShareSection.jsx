@@ -10,9 +10,9 @@ const ShareSection = () => {
   const shareToInstagram = () => {
     try {
       const imageUrl = encodeURIComponent(
-        "https://example.com/path-to-image.jpg"
+        "https://prismaforge.vercel.app/logo_clear.png"
       );
-      const contentUrl = encodeURIComponent("https://example.com");
+      const contentUrl = encodeURIComponent("https://prismaforge.vercel.app/");
       const sourceApp = encodeURIComponent("prismaforge"); // Custom string representing your web app
 
       const instagramDeepLink = `instagram://story?background_image=${imageUrl}&content_url=${contentUrl}&source_application=${sourceApp}`;
