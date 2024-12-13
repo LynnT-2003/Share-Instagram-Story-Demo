@@ -11,10 +11,10 @@ const ShareSection = () => {
 
   const shareToInstagram = () => {
     try {
-      saveAs("/logo.webp", "prismaforge_logo.webp");
+      saveAs("/logo.webp", "prismaforge.webp");
 
-      //   const instagramDeepLink = "instagram://camera";
-      //   window.location.href = instagramDeepLink;
+      const instagramDeepLink = "instagram://camera";
+      window.location.href = instagramDeepLink;
     } catch (error) {
       setErrorMessage(
         "Instagram is not installed or this action is not supported on your device."
@@ -25,7 +25,7 @@ const ShareSection = () => {
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center bg-blue-50">
       <div className="flex flex-col items-center justify-center w-48">
-        <h1>Take #10</h1>
+        <h1>Take #11</h1>
         <Button
           variant={"outline"}
           className="w-full mt-2"
@@ -34,6 +34,9 @@ const ShareSection = () => {
           <InstagramIcon />
           Share on Instagram
         </Button>
+        <h1 className="text-center text-xs mt-4 text-red-600">
+          For mobile iOS users, please save the image from Files to your device.
+        </h1>
         <img
           src="/logo.webp"
           alt="logo"
