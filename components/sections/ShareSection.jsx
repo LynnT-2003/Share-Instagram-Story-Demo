@@ -14,8 +14,8 @@ const ShareSection = () => {
       const contentUrl = "https://prismaforge.vercel.app/";
       const sourceApp = "573036478771132"; // Custom string representing your web app
 
-      //   const instagramDeepLink = `instagram://story?background_image=${imageUrl}&content_url=${contentUrl}&source_application=${sourceApp}`;
-      const instagramDeepLink = `instagram-stories://share`;
+      const instagramDeepLink = `instagram-stories://share?background_image=${imageUrl}&content_url=${contentUrl}&source_application=${sourceApp}`;
+      //   const instagramDeepLink = `instagram-stories://share?background_image=${imageUrl}`;
 
       // Try to open the Instagram deep link
       window.location.href = instagramDeepLink;
@@ -36,7 +36,7 @@ const ShareSection = () => {
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center bg-blue-50">
       <div className="flex flex-col items-center justify-center w-48">
-        <h1>Take #6</h1>
+        <h1>Take #7</h1>
         <Button
           variant={"outline"}
           className="w-full mt-2"
