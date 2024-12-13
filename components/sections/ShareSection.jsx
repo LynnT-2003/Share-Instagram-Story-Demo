@@ -9,23 +9,34 @@ const ShareSection = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const imageUrl = "/logo.webp"; // Image in the public directory
 
-  const shareToInstagram = () => {
-    try {
-      saveAs("/logo.webp", "prismaforge.webp");
+  const saveImage = (url, filename) => {
+    return new Promise((resolve, reject) => {
+      try {
+        saveAs(url, filename);
+        resolve("Download started");
+      } catch (error) {
+        reject("Download failed");
+      }
+    });
+  };
 
-      const instagramDeepLink = "instagram://camera";
-      window.location.href = instagramDeepLink;
-    } catch (error) {
-      setErrorMessage(
-        "Instagram is not installed or this action is not supported on your device."
-      );
-    }
+  const shareToInstagram = () => {
+    saveImage("/logo.webp", "prismaforge.webp")
+      .then(() => {
+        const instagramDeepLink = "instagram://camera";
+        window.location.href = instagramDeepLink;
+      })
+      .catch((error) => {
+        setErrorMessage(
+          "Instagram is not installed or this action is not supported on your device."
+        );
+      });
   };
 
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center bg-blue-50">
       <div className="flex flex-col items-center justify-center w-48">
-        <h1>Take #11</h1>
+        <h1>Take #12</h1>
         <Button
           variant={"outline"}
           className="w-full mt-2"
