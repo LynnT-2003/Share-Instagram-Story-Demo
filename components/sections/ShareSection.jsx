@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { InstagramIcon } from "lucide-react";
+import { saveAs } from "file-saver";
 
 const ShareSection = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -10,10 +11,8 @@ const ShareSection = () => {
 
   const shareToInstagram = () => {
     try {
-      const link = document.createElement("a");
-      link.href = "/logo.webp";
-      link.download = "prismaforge_logo.webp";
-      link.click();
+      saveAs("/logo.webp", "prismaforge_logo.webp");
+
       //   const instagramDeepLink = "instagram://camera";
       //   window.location.href = instagramDeepLink;
     } catch (error) {
