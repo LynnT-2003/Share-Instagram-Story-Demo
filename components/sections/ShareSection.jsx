@@ -9,20 +9,24 @@ const ShareSection = () => {
 
   const shareToInstagram = () => {
     try {
-      const imageUrl = "https://prismaforge.vercel.app/logo_clear.png"; // Image URL
-      const sourceApp = "prismaforge"; // Custom string representing your web app
+      const imageUrl = "https://prismaforge.vercel.app/logo_clear.png";
 
-      const instagramDeepLink = `instagram://story?background_image=${imageUrl}&source_application=${sourceApp}`;
+      const contentUrl = "https://prismaforge.vercel.app/";
+      const sourceApp = "573036478771132"; // Custom string representing your web app
 
+      const instagramDeepLink = `instagram://story?background_image=${imageUrl}&content_url=${contentUrl}&source_application=${sourceApp}`;
+
+      // Try to open the Instagram deep link
       window.location.href = instagramDeepLink;
 
+      // Fallback: Check if the deep link worked
       setTimeout(() => {
         if (!document.hidden) {
           setErrorMessage(
             "Instagram is not installed or this action is not supported on your device."
           );
         }
-      }, 1000);
+      }, 1000); // Adjust the timeout as necessary
     } catch (error) {
       setErrorMessage("An error occurred while trying to share to Instagram.");
     }
@@ -31,7 +35,7 @@ const ShareSection = () => {
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center bg-blue-50">
       <div className="flex flex-col items-center justify-center w-48">
-        <h1>Take #2</h1>
+        <h1>Take #3</h1>
         <Button
           variant={"outline"}
           className="w-full mt-2"
