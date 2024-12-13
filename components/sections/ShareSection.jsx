@@ -6,44 +6,34 @@ import { InstagramIcon } from "lucide-react";
 
 const ShareSection = () => {
   const [errorMessage, setErrorMessage] = useState("");
+  const imageUrl = "/logo.webp"; // Image in the public directory
 
   const shareToInstagram = () => {
     try {
-      const imageUrl = "https://prismaforge.vercel.app/logo_clear.png";
-
-      const contentUrl = "https://prismaforge.vercel.app/";
-      const sourceApp = "583036478771132"; // Custom string representing your web app
-
-      //   const instagramDeepLink = `instagram-stories://share?background_image=${imageUrl}&content_url=${contentUrl}&source_application=${sourceApp}`;
-      const instagramDeepLink = "instagram://create";
-
-      // Try to open the Instagram deep link
+      const link = document.createElement("a");
+      link.href = imageUrl;
+      link.download = "prismaforge_logo.webp";
+      link.click();
+      const instagramDeepLink = "instagram://camera";
       window.location.href = instagramDeepLink;
-
-      // Fallback: Check if the deep link worked
-      setTimeout(() => {
-        if (!document.hidden) {
-          setErrorMessage(
-            "Instagram is not installed or this action is not supported on your device."
-          );
-        }
-      }, 1000); // Adjust the timeout as necessary
     } catch (error) {
-      setErrorMessage("An error occurred while trying to share to Instagram.");
+      setErrorMessage(
+        "Instagram is not installed or this action is not supported on your device."
+      );
     }
   };
 
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center bg-blue-50">
       <div className="flex flex-col items-center justify-center w-48">
-        <h1>Take #8</h1>
+        <h1>Take #10</h1>
         <Button
           variant={"outline"}
           className="w-full mt-2"
           onClick={shareToInstagram}
         >
           <InstagramIcon />
-          Share to Instagram
+          Share on Instagram Story
         </Button>
         <img
           src="https://prismaforge.vercel.app/logo_clear.png"
