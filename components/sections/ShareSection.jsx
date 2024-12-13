@@ -19,9 +19,9 @@ const ShareSection = () => {
       const userAgent = navigator.userAgent.toLowerCase();
       let instagramDeepLink = "instagram://camera";
 
-      //   if (userAgent.includes("android")) {
-      //     instagramDeepLink = "com.instagram.android.camera";
-      //   }
+      if (userAgent.includes("android")) {
+        instagramDeepLink = "instagram://";
+      }
 
       window.location.href = instagramDeepLink;
     } catch (error) {
@@ -41,7 +41,7 @@ const ShareSection = () => {
           onClick={downloadImage}
         >
           <Download />
-          Save Image
+          Download Image
         </Button>
         <Button
           variant={"outline"}
@@ -51,14 +51,14 @@ const ShareSection = () => {
           <InstagramIcon />
           Share on Instagram
         </Button>
-        <h1 className="text-center text-xs mt-4 text-red-600">
-          For mobile iOS users, please save the image from Files to your device.
-        </h1>
         <img
           src="/logo.webp"
           alt="logo"
           className="w-full mt-4 bg-blue-200 rounded-lg"
         />
+        <h1 className="text-center text-xs mt-4 text-red-600">
+          For mobile iOS users, please save the image from Files to your device.
+        </h1>
       </div>
       {errorMessage && (
         <div className="mt-4 text-red-600 text-lg w-64 text-center">
