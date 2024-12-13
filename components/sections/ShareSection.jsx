@@ -3,40 +3,46 @@ import React from "react";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { InstagramIcon } from "lucide-react";
+import { Download } from "lucide-react";
 import { saveAs } from "file-saver";
 
 const ShareSection = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const imageUrl = "/logo.webp"; // Image in the public directory
 
-  const saveImage = (url, filename) => {
-    return new Promise((resolve, reject) => {
-      try {
-        saveAs(url, filename);
-        resolve("Download started");
-      } catch (error) {
-        reject("Download failed");
-      }
-    });
+  const downloadImage = () => {
+    saveAs(imageUrl, "prismaforge.webp");
   };
 
   const shareToInstagram = () => {
-    saveImage("/logo.webp", "prismaforge.webp")
-      .then(() => {
-        const instagramDeepLink = "instagram://camera";
-        window.location.href = instagramDeepLink;
-      })
-      .catch((error) => {
-        setErrorMessage(
-          "Instagram is not installed or this action is not supported on your device."
-        );
-      });
+    try {
+      const userAgent = navigator.userAgent.toLowerCase();
+      let instagramDeepLink = "instagram://camera";
+
+      //   if (userAgent.includes("android")) {
+      //     instagramDeepLink = "com.instagram.android.camera";
+      //   }
+
+      window.location.href = instagramDeepLink;
+    } catch (error) {
+      setErrorMessage(
+        "Instagram is not installed or this action is not supported on your device."
+      );
+    }
   };
 
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center bg-blue-50">
       <div className="flex flex-col items-center justify-center w-48">
         <h1>Take #12</h1>
+        <Button
+          variant={"outline"}
+          className="w-full mt-2"
+          onClick={downloadImage}
+        >
+          <Download />
+          Save Image
+        </Button>
         <Button
           variant={"outline"}
           className="w-full mt-2"
